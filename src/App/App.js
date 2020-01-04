@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router, Route, Redirect, Switch,
 } from 'react-router-dom';
 import firebase from 'firebase';
-
+import MyNavbar from '../components/pages/shared/MyNavbar';
 import './App.scss';
 import Auth from '../components/pages/Auth/Auth';
 import NewBoard from '../components/pages/NewBoard/NewBoard';
@@ -32,7 +32,6 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    console.log('test');
     this.removeListener = firebase.auth().onAuthStateChanged((user) => {
       console.log(user);
       if (user) {
@@ -51,6 +50,7 @@ class App extends React.Component {
     const { authed } = this.state;
     return (
     <div className="App">
+      <MyNavbar authed={authed}/>
     <Router>
       <Switch>
         <PrivateRoute path="/" exact component={Home} authed={authed}/>
