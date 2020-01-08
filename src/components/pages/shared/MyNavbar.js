@@ -26,7 +26,7 @@ class MyNavbar extends React.Component {
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto mt-2 mt-lg-0"></ul>
             <div class="my-2 mt-lg-0">
-              {authed && (<button className="nav-linsk btn btn-danger" onClick={this.logMeOut}>Logout</button>)}
+              {authed && (<button className="nav-link btn btn-danger" onClick={this.logMeOut}>Logout</button>)}
             </div>
           </div>
         </nav>
