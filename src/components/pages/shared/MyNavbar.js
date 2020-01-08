@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import firebaseApp from '../../../helpers/data/connection';
+// import firebaseApp from '../../../helpers/data/connection';
 
 class MyNavbar extends React.Component {
   static propTypes = {
