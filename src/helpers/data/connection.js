@@ -1,9 +1,9 @@
-import firebase from 'firebase';
-import apiKeys from '../apiKeys.json';
+import firebase from 'firebase/app';
+import firebaseConfig from '../apiKeys.json';
 
 const firebaseApp = () => {
   if (!firebase.apps.length) {
-    firebase.initializeApp(apiKeys.firebaseKeys);
+    firebase.initializeApp(firebaseConfig.firebaseKeys);
   }
 };
 
