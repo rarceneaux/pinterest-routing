@@ -50,8 +50,8 @@ class App extends React.Component {
     const { authed } = this.state;
     return (
     <div className="App">
-    <Router>
       <MyNavbar authed={authed}/>
+    <Router>
       <Switch>
         <PrivateRoute path="/" exact component={Home} authed={authed}/>
         <PrivateRoute path="/board/new" exact component={NewBoard} authed={authed}/>
