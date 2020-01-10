@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import firebaseApp from '../../../helpers/data/connection';
+// import firebaseApp from '../../../helpers/data/connection';
 
 class MyNavbar extends React.Component {
   static propTypes = {
@@ -39,7 +39,6 @@ class MyNavbar extends React.Component {
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            { buildNavbar() }
           </div>
         </nav>
       </div>
