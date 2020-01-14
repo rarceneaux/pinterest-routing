@@ -23,7 +23,7 @@ render() {
       <div className="Board col-4">
       <div className="card">
     <div className="card-body">
-      <button className="btn btn-danger" onClick={this.deleteBoardEvent}>X</button>
+      <button className="btn btn-danger" onClick={this.deleteBoardEvent}>Delete</button>
       <Link className="btn btn-warning" to={`/board/${board.id}/edit`}>Edit</Link>
   <p className="card-title">{board.name}</p>
   <h5 className="card-text">{board.description}</h5>
