@@ -7,6 +7,7 @@ const getBoardsByUid = (uid) => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/boards.json?orderBy="uid"&equalTo="${uid}"`)
     .then((result) => {
       const allBoardsObj = result.data;
+      console.log(result.data);
       const boards = [];
       if (allBoardsObj != null) {
         Object.keys(allBoardsObj).forEach((boardId) => {

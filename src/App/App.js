@@ -6,10 +6,10 @@ import firebase from 'firebase';
 import MyNavbar from '../components/pages/shared/MyNavbar';
 import './App.scss';
 import Auth from '../components/pages/Auth/Auth';
-import NewBoard from '../components/pages/NewBoard/NewBoard';
+import BoardForm from '../components/pages/BoardForm/BoardForm';
 import SingleBoard from '../components/pages/SingleBoard/SingleBoard';
 import Home from '../components/pages/Home/Home';
-
+import PinForm from '../components/pages/PinForm/PinForm';
 import 'firebase/auth';
 import firebaseConnection from '../helpers/data/connection';
 
@@ -54,9 +54,13 @@ class App extends React.Component {
       <MyNavbar authed={authed}/>
       <Switch>
         <PrivateRoute path="/" exact component={Home} authed={authed}/>
-        <PrivateRoute path="/board/new" exact component={NewBoard} authed={authed}/>
+        <PrivateRoute path="/board/new" exact component={BoardForm} authed={authed}/>
         <PublicRoute path="/auth" exact component={Auth} authed={authed}/>
         <PrivateRoute path="/board/:boardId" exact component={SingleBoard} authed={authed} />
+        <PrivateRoute path="/board/:boardId/edit" exact component={BoardForm} authed={authed} />
+        <PrivateRoute path="/board/:boardId/pin/new" exact component={PinForm} authed={authed} />
+        <PrivateRoute path="/board/:boardId/pin/:pinId/edit" exact component={PinForm} authed={authed} />
+
       </Switch>
     </Router>
   </div>
