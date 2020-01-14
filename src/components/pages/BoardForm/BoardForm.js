@@ -9,6 +9,18 @@ class BoardForm extends React.Component {
     boardDecscription: '',
   }
 
+  componentDidMount() {
+    const { boardId } = this.props.match.params;
+    if (boardId) {
+      boardData.getSingleBoard(boardId)
+        .then((response) => {
+          this.setState({ boardName: response.data.name, boardDecscription: response.data.description });
+          this.getPinData(boardId);
+        })
+        .catch((err) => console.error('error in get single board', err));
+    }
+  }
+
   nameChange = (e) => {
     e.preventDefault();
     this.setState({ boardName: e.target.value });
@@ -31,8 +43,22 @@ class BoardForm extends React.Component {
       .catch((err) => console.error('err', err));
   }
 
+  editBoardEvent = (e) => {
+    const { boardId } = this.props.match.params;
+    e.preventDefault();
+    const newBoard = {
+      name: this.state.boardName,
+      description: this.state.boardDecscription,
+      uid: authData.getUid(),
+    };
+    boardData.updateBoard(boardId, newBoard)
+      .then(() => this.props.history.push('/'))
+      .catch((err) => console.error('err', err));
+  }
+
   render() {
     const { boardName, boardDecscription } = this.state;
+    const { boardId } = this.props.match.params;
     return (
       <form className="boardform">
        <div className="form-group">
@@ -46,20 +72,21 @@ class BoardForm extends React.Component {
          onChange={this.nameChange}
          />
        </div>
-       <form className="boardform">
        <div className="form-group">
          <label htmlFor="board-description">Board Description</label>
          <input 
          type="text"
          className="form-control"
-         id="board-name"
+         id="board-description"
          placeholder="Enter board Info"
          value={boardDecscription}
          onChange={this.descriptionChange}
          />
        </div>
-       <button className="btn btn-secondary" onClick={this.saveBoardEvent}>Save Board</button>
-      </form>
+       { boardId
+         ? <button className="btn btn-secondary" onClick={this.editBoardEvent}>Edit Board</button>
+         : <button className="btn btn-secondary" onClick={this.saveBoardEvent}>Save Board</button>
+       }
       </form>
     );
   }

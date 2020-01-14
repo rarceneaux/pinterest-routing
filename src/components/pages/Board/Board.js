@@ -24,6 +24,7 @@ render() {
       <div className="card">
     <div className="card-body">
       <button className="btn btn-danger" onClick={this.deleteBoardEvent}>X</button>
+      <Link className="btn btn-warning" to={`/board/${board.id}/edit`}>Edit</Link>
   <p className="card-title">{board.name}</p>
   <h5 className="card-text">{board.description}</h5>
   <Link className="btn btn-primary" to={`/board/${board.id}`}>View Board</Link>
